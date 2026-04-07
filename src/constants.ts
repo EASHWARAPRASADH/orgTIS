@@ -158,7 +158,9 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name,
     role: "Team Member",
     department: "IST PEGASUS",
-    photoUrl: name === "Arul jothi" ? "/assets/employees/arul jothi.png" : `https://picsum.photos/seed/${name}/100/100`,
+    photoUrl: name === "Arul jothi" ? "/assets/employees/arul jothi.png" : 
+              name === "Devasri" ? "/assets/employees/devasri.png" : 
+              `https://picsum.photos/seed/${name}/100/100`,
     managerId: "srivishnu",
     color: "#FCA5A5",
     displayOrder: 18 + i,
@@ -226,6 +228,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
               name === "Nithish" ? "/assets/employees/nithesh s.png" : 
               name === "Nithish_2" ? "/assets/employees/niteesh s.png" : 
               name === "Swedha Sri" ? "/assets/employees/swetha sri.png" : 
+              name === "Arpit" ? "/assets/employees/arpith.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "dhipak",
     color: "#C084FC",
