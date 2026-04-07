@@ -113,7 +113,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   // IST ATHENA
   {
     id: "eashwara",
-    name: "EASHWARA PRASADH",
+    name: "Eashwara Prasadh R",
     role: "Project Manager OF NUTECH",
     department: "IST ATHENA",
     photoUrl: "https://picsum.photos/seed/eashwara/100/100",
@@ -123,7 +123,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
   {
     id: "yuvaraj",
-    name: "Yuvaraj",
+    name: "Yuvaraj S",
     role: "Lead",
     department: "IST ATHENA",
     photoUrl: "/assets/employees/yuvaraj.png",
@@ -131,18 +131,18 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     color: "#BEF264",
     displayOrder: 4,
   },
-  ...["Shrimathi", "Darshan", "Arjun", "Prasanna", "Deepshika", "Haritha", "Devasenatipathi"].map((name, i) => ({
+  ...["Shri Mathi M", "Darshan K", "Arjun G", "Prasanna Venkatesh B", "Deepshika A", "Haritha R", "Devasenatipathi R"].map((name, i) => ({
     id: `athena-${i}`,
     name,
     role: ENGINEERING_ROLES[i % ENGINEERING_ROLES.length],
     department: "IST ATHENA",
-    photoUrl: name === "Shrimathi" ? "/assets/employees/shrimathi.png" : 
-              name === "Prasanna" ? "/assets/employees/prasanna venkatesh.png" : 
-              name === "Arjun" ? "/assets/employees/arjun.png" : 
-              name === "Deepshika" ? "/assets/employees/deepshika.png" : 
-              name === "Haritha" ? "/assets/employees/hritha.png" : 
-              name === "Devasenatipathi" ? "/assets/employees/devasenathipathi.png" : 
-              name === "Darshan" ? "/assets/employees/darshan.png" : 
+    photoUrl: name === "Shri Mathi M" ? "/assets/employees/shrimathi.png" : 
+              name === "Prasanna Venkatesh B" ? "/assets/employees/prasanna venkatesh.png" : 
+              name === "Arjun G" ? "/assets/employees/arjun.png" : 
+              name === "Deepshika A" ? "/assets/employees/deepshika.png" : 
+              name === "Haritha R" ? "/assets/employees/hritha.png" : 
+              name === "Devasenatipathi R" ? "/assets/employees/devasenathipathi.png" : 
+              name === "Darshan K" ? "/assets/employees/darshan.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "yuvaraj",
     color: "#BEF264",
@@ -152,7 +152,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   // IST PEGASUS
   {
     id: "ashwika",
-    name: "Ashwika",
+    name: "Ashwika K",
     role: "Project Manger OF GOTEK / KUMAR AGRO",
     department: "IST PEGASUS",
     photoUrl: "/assets/employees/ashwika.png",
@@ -162,7 +162,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
   {
     id: "harita_v",
-    name: "Harita Versni",
+    name: "Harita Versni V",
     role: "Lead(Gotek)",
     department: "IST PEGASUS",
     photoUrl: "/assets/employees/harithavershini.jpeg",
@@ -170,14 +170,14 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     color: "#FCA5A5",
     displayOrder: 13,
   },
-  ...["Hariharan", "Rakshana", "Fahima"].map((name, i) => ({
+  ...["Hariharan B", "Rakshana Devi R", "Fahima J", "Akalya K", "Shalini P"].map((name, i) => ({
     id: `pegasus-g-${i}`,
     name,
     role: ENGINEERING_ROLES[(i + 1) % ENGINEERING_ROLES.length],
     department: "IST PEGASUS",
-    photoUrl: name === "Hariharan" ? "/assets/employees/hariharan.png" : 
-              name === "Rakshana" ? "/assets/employees/rakshana devi.png" : 
-              name === "Fahima" ? "/assets/employees/faheema.png" : 
+    photoUrl: name === "Hariharan B" ? "/assets/employees/hariharan.png" : 
+              name === "Rakshana Devi R" ? "/assets/employees/rakshana devi.png" : 
+              name === "Fahima J" ? "/assets/employees/faheema.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "harita_v",
     color: "#FCA5A5",
@@ -185,7 +185,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   })),
   {
     id: "srivishnu",
-    name: "Srivishnu",
+    name: "Srivishnu K",
     role: "Lead(Kumar Agro)",
     department: "IST PEGASUS",
     photoUrl: "/assets/employees/srivishnu.png",
@@ -193,13 +193,13 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     color: "#FCA5A5",
     displayOrder: 17,
   },
-  ...["Devasri", "Arul jothi"].map((name, i) => ({
+  ...["Devasri S", "Arul Jothiarasu V"].map((name, i) => ({
     id: `pegasus-k-${i}`,
     name,
     role: ENGINEERING_ROLES[(i + 2) % ENGINEERING_ROLES.length],
     department: "IST PEGASUS",
-    photoUrl: name === "Arul jothi" ? "/assets/employees/arul jothi.png" : 
-              name === "Devasri" ? "/assets/employees/devasri.png" : 
+    photoUrl: name === "Arul Jothiarasu V" ? "/assets/employees/arul jothi.png" : 
+              name === "Devasri S" ? "/assets/employees/devasri.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "srivishnu",
     color: "#FCA5A5",
@@ -209,7 +209,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   // IST DYNAMICS
   {
     id: "sriram",
-    name: "Sriram",
+    name: "Sri Ram S",
     role: "Project Manager OF ALAGANDRA",
     department: "IST DYNAMICS",
     photoUrl: "/assets/employees/sriram.png",
@@ -219,7 +219,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
   {
     id: "maheswaran",
-    name: "Maheswaran",
+    name: "Maheshwaran S",
     role: "Lead",
     department: "IST DYNAMICS",
     photoUrl: "/assets/employees/maheshwaran.png",
@@ -227,18 +227,18 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     color: "#93C5FD",
     displayOrder: 21,
   },
-  ...["Shailendhirah", "Sithananthan", "Diya", "Sanjay", "Subiksha", "Varshini", "Jaseema"].map((name, i) => ({
+  ...["Shailendhirah A", "Sithananthan S", "Diya R", "Sanjay R", "Subiksha G", "Varshini R", "Jaseema Yasmin A"].map((name, i) => ({
     id: `dynamics-${i}`,
     name,
     role: ENGINEERING_ROLES[(i + 3) % ENGINEERING_ROLES.length],
     department: "IST DYNAMICS",
-    photoUrl: name === "Shailendhirah" ? "/assets/employees/shilendra.png" : 
-              name === "Diya" ? "/assets/employees/diya.png" : 
-              name === "Sanjay" ? "/assets/employees/sanjay.png" : 
-              name === "Subiksha" ? "/assets/employees/subkisha.png" : 
-              name === "Varshini" ? "/assets/employees/varshini.png" : 
-              name === "Jaseema" ? "/assets/employees/jaseema.png" : 
-              name === "Sithananthan" ? "/assets/employees/sitha.jpg" : 
+    photoUrl: name === "Shailendhirah A" ? "/assets/employees/shilendra.png" : 
+              name === "Diya R" ? "/assets/employees/diya.png" : 
+              name === "Sanjay R" ? "/assets/employees/sanjay.png" : 
+              name === "Subiksha G" ? "/assets/employees/subkisha.png" : 
+              name === "Varshini R" ? "/assets/employees/varshini.png" : 
+              name === "Jaseema Yasmin A" ? "/assets/employees/jaseema.png" : 
+              name === "Sithananthan S" ? "/assets/employees/sitha.jpg" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "maheswaran",
     color: "#93C5FD",
@@ -248,7 +248,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   // IST NEXUS
   {
     id: "yusuf",
-    name: "Yusuf",
+    name: "Yusuf Fayas",
     role: "Project Manager OF RATE 4 GOLD",
     department: "IST NEXUS",
     photoUrl: "/assets/employees/yusuf fayas.png",
@@ -258,7 +258,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
   {
     id: "dhipak",
-    name: "Dhipak",
+    name: "Dhipak S",
     role: "Lead",
     department: "IST NEXUS",
     photoUrl: "/assets/employees/dhipak.png",
@@ -266,19 +266,19 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     color: "#C084FC",
     displayOrder: 31,
   },
-  ...["Arpit", "Nithish", "Manikandan", "Shivani", "Purushoth", "Nithish_2", "Swedha Sri", "Monikka"].map((name, i) => ({
+  ...["Arpit Sharma", "Nithish S", "Manikandan A", "Shivani M", "Purushoth A", "Nitesh S", "Swedha Sri S", "Monikka V"].map((name, i) => ({
     id: `nexus-${i}`,
-    name: name.replace("_2", ""),
+    name,
     role: ENGINEERING_ROLES[(i + 4) % ENGINEERING_ROLES.length],
     department: "IST NEXUS",
-    photoUrl: name === "Purushoth" ? "/assets/employees/purushoth.png" : 
-              name === "Nithish" ? "/assets/employees/nithesh s.png" : 
-              name === "Nithish_2" ? "/assets/employees/niteesh s.png" : 
-              name === "Swedha Sri" ? "/assets/employees/swetha sri.png" : 
-              name === "Arpit" ? "/assets/employees/arpith.png" : 
-              name === "Manikandan" ? "/assets/employees/manigandan.png" : 
-              name === "Shivani" ? "/assets/employees/shivani.png" : 
-              name === "Monikka" ? "/assets/employees/monika.png" : 
+    photoUrl: name === "Purushoth A" ? "/assets/employees/purushoth.png" : 
+              name === "Nithish S" ? "/assets/employees/nithesh s.png" : 
+              name === "Nitesh S" ? "/assets/employees/niteesh s.png" : 
+              name === "Swedha Sri S" ? "/assets/employees/swetha sri.png" : 
+              name === "Arpit Sharma" ? "/assets/employees/arpith.png" : 
+              name === "Manikandan A" ? "/assets/employees/manigandan.png" : 
+              name === "Shivani M" ? "/assets/employees/shivani.png" : 
+              name === "Monikka V" ? "/assets/employees/monika.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "dhipak",
     color: "#C084FC",
@@ -288,7 +288,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   // IST R & D
   {
     id: "kollati",
-    name: "Kollati",
+    name: "Kollati Gowtham Venkata Bhaskar",
     role: "Porject Manager OF GOTEK (Lanyard Designing)",
     department: "IST R & D",
     photoUrl: "/assets/employees/kollati.png",
@@ -298,7 +298,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
   {
     id: "praveen",
-    name: "Praveen",
+    name: "Dommeti Praveen Satya Prakash",
     role: "Lead",
     department: "IST R & D",
     photoUrl: "/assets/employees/praveen.png",
@@ -308,7 +308,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
   {
     id: "vysakhi",
-    name: "Vysakhi",
+    name: "Vysakhi Sreekandh",
     role: ENGINEERING_ROLES[0],
     department: "IST R & D",
     photoUrl: "/assets/employees/vyshaki.png",
@@ -318,19 +318,19 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
 
   // IST VERTEX
-  ...["Madhesh", "Anjali", "Nitesh", "Harini", "Daksh", "Prasana Vengates", "Vishveshwar", "Jayasuriya"].map((name, i) => ({
+  ...["Madhesh R", "Anjali C", "Nitesh S", "Harini Sri M", "Daksh Sharma", "Prasana Vengates M", "Vishveshwar S", "Jayasuriya S", "Kiyshor K", "Pravinkumar S"].map((name, i) => ({
     id: `vertex-${i}`,
     name,
     role: ENGINEERING_ROLES[i % ENGINEERING_ROLES.length],
     department: "IST VERTEX",
-    photoUrl: name === "Madhesh" ? "/assets/employees/madhesh.png" : 
-              name === "Daksh" ? "/assets/employees/daksh.png" : 
-              name === "Anjali" ? "/assets/employees/ANJALI.jpg" : 
-              name === "Prasana Vengates" ? "/assets/employees/prasanavengetesh.png" : 
-              name === "Vishveshwar" ? "/assets/employees/vishweshwar.png" : 
-              name === "Jayasuriya" ? "/assets/employees/jayasurya.png" : 
-              name === "Harini" ? "/assets/employees/harini sri.png" : 
-              name === "Nitesh" ? "/assets/employees/nithesh s.png" : 
+    photoUrl: name === "Madhesh R" ? "/assets/employees/madhesh.png" : 
+              name === "Daksh Sharma" ? "/assets/employees/daksh.png" : 
+              name === "Anjali C" ? "/assets/employees/ANJALI.jpg" : 
+              name === "Prasana Vengates M" ? "/assets/employees/prasanavengetesh.png" : 
+              name === "Vishveshwar S" ? "/assets/employees/vishweshwar.png" : 
+              name === "Jayasuriya S" ? "/assets/employees/jayasurya.png" : 
+              name === "Harini Sri M" ? "/assets/employees/harini sri.png" : 
+              name === "Nitesh S" ? "/assets/employees/nithesh s.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "priyadharshini",
     color: "#E5E7EB",
