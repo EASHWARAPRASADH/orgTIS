@@ -3,18 +3,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { OrgChart } from "./components/OrgChart";
 import { AdminPanel } from "./components/AdminPanel";
 import { INITIAL_EMPLOYEES } from "./constants";
 import { Employee } from "./types";
 import { LayoutDashboard, Settings, Users, Share2, Download, Info, Menu, X, LogIn, LogOut, ShieldCheck, Database, Mail } from "lucide-react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import { cn } from "./lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import { supabase } from "./supabase";
 import { User } from "@supabase/supabase-js";
 
 export default function App() {
+  const chartRef = useRef<any>(null);
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [activeTab, setActiveTab] = useState<"chart" | "admin">("chart");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -238,6 +241,64 @@ export default function App() {
       if (error) throw error;
     } catch (error) {
       console.error("Logout Error:", error);
+    }
+  };
+
+  const handleExportPDF = async () => {
+    if (!chartRef.current) {
+      console.error("Export Ref Missing");
+      return;
+    }
+    
+    const container = chartRef.current.getContainer();
+    if (!container) {
+      console.error("Export Container Missing");
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      console.log("PDF Export Started...");
+
+      // Wait for any animations to settle
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log("Capturing Canvas...");
+      const canvas = await html2canvas(container, {
+        scale: 2, 
+        useCORS: true,
+        allowTaint: true, // Needed for some external images
+        logging: true, // Helpful for Vercel/Production debugging
+        backgroundColor: "#F9FAFB",
+        ignoreElements: (element) => {
+          // Ignore control panels if they are inside
+          return element.classList.contains('z-10');
+        }
+      });
+      
+      console.log("Canvas Captured. Generating PDF...");
+      const imgData = canvas.toDataURL('image/png', 1.0);
+      
+      if (!imgData || imgData === 'data:,') {
+        throw new Error("Canvas data is empty. The chart might be too large or blocked by security.");
+      }
+
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'px',
+        format: [canvas.width, canvas.height]
+      });
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      const filename = `TisOrgChart_${new Date().toISOString().split('T')[0]}.pdf`;
+      pdf.save(filename);
+      console.log(`PDF Export Complete: ${filename}`);
+      alert("✅ PDF exported successfully!");
+    } catch (error: any) {
+      console.error("PDF Export failed:", error);
+      alert(`❌ PDF Export Failed: ${error.message || "Unknown Error"}\n\nCheck Browser Console (F12) for logs.`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -492,7 +553,10 @@ export default function App() {
           </div>
           
           <div className="flex items-center gap-2 md:gap-3">
-            <button className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-gray-600 hover:bg-gray-50 rounded-lg transition-colors border border-gray-200">
+            <button 
+              onClick={handleExportPDF}
+              className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-gray-600 hover:bg-gray-50 rounded-lg transition-colors border border-gray-200"
+            >
               <Download className="w-4 h-4" />
               <span className="hidden md:inline">Export PDF</span>
             </button>
@@ -503,7 +567,7 @@ export default function App() {
         {/* Content */}
         <div className="flex-1 relative flex overflow-hidden">
           <div className="flex-1 relative">
-            <OrgChart employees={employees} />
+            <OrgChart ref={chartRef} employees={employees} />
           </div>
           
           <AnimatePresence>

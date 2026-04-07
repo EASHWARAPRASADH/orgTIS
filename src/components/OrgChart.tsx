@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState, useEffect } from "react";
+import React, { useMemo, useRef, useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import * as d3 from "d3";
 import { motion, AnimatePresence } from "motion/react";
 import { Employee } from "../types";
@@ -12,7 +12,12 @@ interface OrgChartProps {
 const NODE_WIDTH = 220;
 const NODE_HEIGHT = 100;
 
-export const OrgChart: React.FC<OrgChartProps> = ({ employees }) => {
+export interface OrgChartHandle {
+  getContainer: () => HTMLDivElement | null;
+  resetView: () => void;
+}
+
+export const OrgChart = forwardRef<OrgChartHandle, OrgChartProps>(({ employees }, ref) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [zoom, setZoom] = useState(1);
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
@@ -150,6 +155,11 @@ export const OrgChart: React.FC<OrgChartProps> = ({ employees }) => {
       setZoom(1);
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    getContainer: () => containerRef.current,
+    resetView: centerChart
+  }));
 
   useEffect(() => {
     centerChart();
@@ -371,4 +381,4 @@ export const OrgChart: React.FC<OrgChartProps> = ({ employees }) => {
       </div>
     </div>
   );
-};
+});
