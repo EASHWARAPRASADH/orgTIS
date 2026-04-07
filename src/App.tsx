@@ -260,29 +260,29 @@ export default function App() {
       setIsLoading(true);
       console.log("PDF Export Started...");
 
-      // Wait for any animations to settle
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Wait longer for any animations and image loads to settle
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
       console.log("Capturing Canvas...");
       const canvas = await html2canvas(container, {
-        scale: 2, 
+        scale: 1.5, // Slightly lower scale to avoid memory/cloning issues on Vercel
         useCORS: true,
-        allowTaint: true, // Needed for some external images
-        logging: true, // Helpful for Vercel/Production debugging
+        logging: true,
         backgroundColor: "#F9FAFB",
-        ignoreElements: (element) => {
-          // Ignore control panels if they are inside
-          return element.classList.contains('z-10');
+        onclone: (clonedDoc) => {
+          console.log("DOM Cloned Successfully. Ready for capture.");
+          // You can perform manual adjustments to the cloned document here if needed
         }
       });
       
-      console.log("Canvas Captured. Generating PDF...");
-      const imgData = canvas.toDataURL('image/png', 1.0);
+      console.log("Canvas Captured. Validating data...");
+      const imgData = canvas.toDataURL('image/png', 0.9);
       
       if (!imgData || imgData === 'data:,') {
-        throw new Error("Canvas data is empty. The chart might be too large or blocked by security.");
+        throw new Error("Canvas generation failed: The output was empty. This usually happens if the container is hidden or the browser hits a memory limit.");
       }
 
+      console.log("Generating PDF Document...");
       const pdf = new jsPDF({
         orientation: 'landscape',
         unit: 'px',
@@ -292,11 +292,12 @@ export default function App() {
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
       const filename = `TisOrgChart_${new Date().toISOString().split('T')[0]}.pdf`;
       pdf.save(filename);
+      
       console.log(`PDF Export Complete: ${filename}`);
       alert("✅ PDF exported successfully!");
     } catch (error: any) {
       console.error("PDF Export failed:", error);
-      alert(`❌ PDF Export Failed: ${error.message || "Unknown Error"}\n\nCheck Browser Console (F12) for logs.`);
+      alert(`❌ PDF Export Failed: ${error.message || "Unknown Error"}\n\nThis can happen in some browsers if the chart is too large. Try zooming in/out or changing the layout before exporting.`);
     } finally {
       setIsLoading(false);
     }
