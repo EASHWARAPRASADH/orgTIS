@@ -1,5 +1,13 @@
 import { Employee } from "./types";
 
+const ENGINEERING_ROLES = [
+  "Front-End Engineer",
+  "Back-End Engineer",
+  "Engineer Full Stack",
+  "Engineer - QA",
+  "Engineer DevOps"
+];
+
 export const INITIAL_EMPLOYEES: Employee[] = [
   // Executives
   {
@@ -126,7 +134,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   ...["Shrimathi", "Darshan", "Arjun", "Prasanna", "Deepshika", "Haritha", "Devasenatipathi"].map((name, i) => ({
     id: `athena-${i}`,
     name,
-    role: "Team Member",
+    role: ENGINEERING_ROLES[i % ENGINEERING_ROLES.length],
     department: "IST ATHENA",
     photoUrl: name === "Shrimathi" ? "/assets/employees/shrimathi.png" : 
               name === "Prasanna" ? "/assets/employees/prasanna venkatesh.png" : 
@@ -165,7 +173,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   ...["Hariharan", "Rakshana", "Fahima"].map((name, i) => ({
     id: `pegasus-g-${i}`,
     name,
-    role: "Team Member",
+    role: ENGINEERING_ROLES[(i + 1) % ENGINEERING_ROLES.length],
     department: "IST PEGASUS",
     photoUrl: name === "Hariharan" ? "/assets/employees/hariharan.png" : 
               name === "Rakshana" ? "/assets/employees/rakshana devi.png" : 
@@ -188,7 +196,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   ...["Devasri", "Arul jothi"].map((name, i) => ({
     id: `pegasus-k-${i}`,
     name,
-    role: "Team Member",
+    role: ENGINEERING_ROLES[(i + 2) % ENGINEERING_ROLES.length],
     department: "IST PEGASUS",
     photoUrl: name === "Arul jothi" ? "/assets/employees/arul jothi.png" : 
               name === "Devasri" ? "/assets/employees/devasri.png" : 
@@ -222,7 +230,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   ...["Shailendhirah", "Sithananthan", "Diya", "Sanjay", "Subiksha", "Varshini", "Jaseema"].map((name, i) => ({
     id: `dynamics-${i}`,
     name,
-    role: "Team Member",
+    role: ENGINEERING_ROLES[(i + 3) % ENGINEERING_ROLES.length],
     department: "IST DYNAMICS",
     photoUrl: name === "Shailendhirah" ? "/assets/employees/shilendra.png" : 
               name === "Diya" ? "/assets/employees/diya.png" : 
@@ -261,7 +269,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   ...["Arpit", "Nithish", "Manikandan", "Shivani", "Purushoth", "Nithish_2", "Swedha Sri", "Monikka"].map((name, i) => ({
     id: `nexus-${i}`,
     name: name.replace("_2", ""),
-    role: "Team Member",
+    role: ENGINEERING_ROLES[(i + 4) % ENGINEERING_ROLES.length],
     department: "IST NEXUS",
     photoUrl: name === "Purushoth" ? "/assets/employees/purushoth.png" : 
               name === "Nithish" ? "/assets/employees/nithesh s.png" : 
@@ -301,7 +309,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "vysakhi",
     name: "Vysakhi",
-    role: "Team Member",
+    role: ENGINEERING_ROLES[0],
     department: "IST R & D",
     photoUrl: "/assets/employees/vyshaki.png",
     managerId: "praveen",
@@ -313,7 +321,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   ...["Madhesh", "Anjali", "Nitesh", "Harini", "Daksh", "Prasana Vengates", "Vishveshwar", "Jayasuriya"].map((name, i) => ({
     id: `vertex-${i}`,
     name,
-    role: "Team Member (Bench)",
+    role: ENGINEERING_ROLES[i % ENGINEERING_ROLES.length],
     department: "IST VERTEX",
     photoUrl: name === "Madhesh" ? "/assets/employees/madhesh.png" : 
               name === "Daksh" ? "/assets/employees/daksh.png" : 
