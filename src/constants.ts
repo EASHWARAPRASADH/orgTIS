@@ -318,13 +318,22 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   },
 
   // IST VERTEX
-  ...["Madhesh R", "Anjali C", "Nitesh S", "Harini Sri M", "Daksh Sharma", "Prasana Vengates M", "Vishveshwar S", "Jayasuriya S", "Kiyshor K", "Pravinkumar S"].map((name, i) => ({
+  {
+    id: "daksh",
+    name: "Daksh Sharma",
+    role: "Lead",
+    department: "IST VERTEX",
+    photoUrl: "/assets/employees/daksh.png",
+    managerId: "priyadharshini",
+    color: "#E5E7EB",
+    displayOrder: 50,
+  },
+  ...["Madhesh R", "Anjali C", "Nitesh S", "Harini Sri M", "Prasana Vengates M", "Vishveshwar S", "Jayasuriya S", "Kiyshor K", "Pravinkumar S"].map((name, i) => ({
     id: `vertex-${i}`,
     name,
     role: ENGINEERING_ROLES[i % ENGINEERING_ROLES.length],
     department: "IST VERTEX",
     photoUrl: name === "Madhesh R" ? "/assets/employees/madhesh.png" : 
-              name === "Daksh Sharma" ? "/assets/employees/daksh.png" : 
               name === "Anjali C" ? "/assets/employees/ANJALI.jpg" : 
               name === "Prasana Vengates M" ? "/assets/employees/prasanavengetesh.png" : 
               name === "Vishveshwar S" ? "/assets/employees/vishweshwar.png" : 
@@ -332,9 +341,9 @@ export const INITIAL_EMPLOYEES: Employee[] = [
               name === "Harini Sri M" ? "/assets/employees/harini sri.png" : 
               name === "Nitesh S" ? "/assets/employees/nithesh s.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
-    managerId: "priyadharshini",
+    managerId: "daksh",
     color: "#E5E7EB",
-    displayOrder: 50 + i,
+    displayOrder: 51 + i,
   })),
 ];
 
