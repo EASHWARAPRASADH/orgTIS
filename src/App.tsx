@@ -235,7 +235,7 @@ export default function App() {
           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
           className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full"
         />
-        <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Initializing ProOrg...</p>
+        <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Initializing TisOrg...</p>
       </div>
     );
   }
@@ -259,7 +259,7 @@ export default function App() {
               />
             </div>
             <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-2">
-              ProOrg Chart
+              TisOrg Chart
             </h1>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Technosprint Info Solutions</p>
           </div>
@@ -363,7 +363,7 @@ export default function App() {
                 onError={(e) => (e.currentTarget.style.display = 'none')}
               />
             </div>
-            <h1 className="font-bold text-lg tracking-tight text-gray-900 whitespace-nowrap">ProOrg</h1>
+            <h1 className="font-bold text-lg tracking-tight text-gray-900 whitespace-nowrap">TisOrg</h1>
           </div>
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -451,7 +451,7 @@ export default function App() {
 
             <div className="hidden md:flex flex-col">
               <h2 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 leading-tight">
-                ProOrg Chart
+                TisOrg Chart
               </h2>
               <p className="text-[9px] font-bold text-gray-400 tracking-[0.1em] uppercase">Technosprint Info Solutions</p>
             </div>
