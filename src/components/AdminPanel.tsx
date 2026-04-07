@@ -465,15 +465,17 @@ const RosterItem: React.FC<RosterItemProps> = ({ emp, employees, onEdit, onDelet
           )}
         </div>
       </div>
-      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="flex items-center gap-1 opacity-100 transition-opacity">
         <button
           onClick={() => onEdit(emp)}
+          title="Edit Employee"
           className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
         >
           <Edit2 className="w-3.5 h-3.5" />
         </button>
         <button
           onClick={() => onDelete(emp.id)}
+          title="Delete Employee"
           className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
         >
           <Trash2 className="w-3.5 h-3.5" />

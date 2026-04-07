@@ -138,23 +138,38 @@ export default function App() {
   };
 
   const handleDeleteEmployee = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this employee? This will move their direct reports to the top level.")) {
+      return;
+    }
+
     try {
-      // Handle children by moving them to top level
-      const children = employees.filter(e => e.managerId === id);
-      for (const child of children) {
-        await supabase
-          .from('employees')
-          .update({ managerId: null })
-          .eq('id', child.id);
+      console.log(`Attempting to delete employee with ID: ${id}`);
+      
+      // Handle children by moving them to top level in a single efficient query
+      const { error: updateError } = await supabase
+        .from('employees')
+        .update({ managerId: null })
+        .eq('managerId', id);
+      
+      if (updateError) {
+        console.error("Error updating children:", updateError);
+        throw updateError;
       }
-      const { error } = await supabase
+
+      const { error: deleteError } = await supabase
         .from('employees')
         .delete()
         .eq('id', id);
-      if (error) throw error;
-    } catch (error) {
+
+      if (deleteError) {
+        console.error("Error deleting from Supabase:", deleteError);
+        throw deleteError;
+      }
+      
+      console.log("Delete successful");
+    } catch (error: any) {
       console.error("Error deleting employee:", error);
-      alert("Failed to delete employee.");
+      alert(`Failed to delete employee: ${error.message || "Unknown error"}`);
     }
   };
 
