@@ -1,11 +1,11 @@
 import { Employee } from "./types";
 
 const ENGINEERING_ROLES = [
-  "Front-End Engineer",
-  "Back-End Engineer",
-  "Engineer Full Stack",
-  "Engineer - QA",
-  "Engineer DevOps"
+  "PROJECT ENGINEER - Front-end Developer",
+  "PROJECT ENGINEER - Back-End Developer",
+  "PROJECT ENGINEER - Full Stack Developer",
+  "PROJECT ENGINEER - Quality Assurance",
+  "PROJECT ENGINEER - DevOps Engineer"
 ];
 
 export const INITIAL_EMPLOYEES: Employee[] = [
