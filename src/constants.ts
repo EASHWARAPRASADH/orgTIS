@@ -110,6 +110,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
               name === "Deepshika" ? "/assets/employees/deepshika.png" : 
               name === "Haritha" ? "/assets/employees/hritha.png" : 
               name === "Devasenatipathi" ? "/assets/employees/devasenathipathi.png" : 
+              name === "Darshan" ? "/assets/employees/darshan.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "yuvaraj",
     color: "#BEF264",
@@ -205,6 +206,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
               name === "Subiksha" ? "/assets/employees/subkisha.png" : 
               name === "Varshini" ? "/assets/employees/varshini.png" : 
               name === "Jaseema" ? "/assets/employees/jaseema.png" : 
+              name === "Sithananthan" ? "/assets/employees/sitha.jpg" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "maheswaran",
     color: "#93C5FD",
