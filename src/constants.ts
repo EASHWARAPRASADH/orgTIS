@@ -77,6 +77,30 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     contact: "+91 98765 43212",
     joinDate: "2021-03-10",
   },
+  {
+    id: "ajay",
+    name: "AJAY SUNDAR N",
+    role: "CHIEF TECHNICAL OFFICER",
+    department: "Executives",
+    photoUrl: "/assets/employees/Ajay.jpeg",
+    managerId: "arun",
+    color: "#FCD34D",
+    displayOrder: 6,
+    bio: "Driving innovation with safe, scalable digital solutions that leverage cutting-edge technology to transform enterprises and fuel growth.",
+    joinDate: "2022-01-01",
+  },
+  {
+    id: "jagan_cso",
+    name: "JAGANATHAN R",
+    role: "CHIEF SECURITY OFFICER",
+    department: "Executives",
+    photoUrl: "/assets/employees/jagan.jpg",
+    managerId: "arun",
+    color: "#FCD34D",
+    displayOrder: 7,
+    bio: "Ensuring robust security with proactive defenses, safeguarding data, and building client trust with compliance excellence.",
+    joinDate: "2022-01-01",
+  },
 
   // IST ATHENA
   {
