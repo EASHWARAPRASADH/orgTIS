@@ -104,7 +104,9 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name,
     role: "Team Member",
     department: "IST ATHENA",
-    photoUrl: name === "Arjun" ? "/assets/employees/arjun.png" : 
+    photoUrl: name === "Shrimathi" ? "/assets/employees/shrimathi.png" : 
+              name === "Prasanna" ? "/assets/employees/prasanna venkatesh.png" : 
+              name === "Arjun" ? "/assets/employees/arjun.png" : 
               name === "Deepshika" ? "/assets/employees/deepshika.png" : 
               name === "Haritha" ? "/assets/employees/hritha.png" : 
               name === "Devasenatipathi" ? "/assets/employees/devasenathipathi.png" : 
