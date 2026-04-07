@@ -17,9 +17,24 @@ import { User } from "@supabase/supabase-js";
 export default function App() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [activeTab, setActiveTab] = useState<"chart" | "admin">("chart");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Handle Resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth <= 768) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Handle Authentication
   useEffect(() => {
@@ -205,24 +220,46 @@ export default function App() {
     );
   }
 
+  const isMobile = windowWidth <= 768;
+
   return (
     <div className="flex h-screen w-screen bg-gray-50 text-gray-900 font-sans overflow-hidden">
+      
+      {/* Mobile Backdrop */}
+      <AnimatePresence>
+        {isSidebarOpen && isMobile && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsSidebarOpen(false)}
+            className="fixed inset-0 bg-gray-900/30 z-40 md:hidden touch-none"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Sidebar Navigation */}
       <motion.aside 
         initial={false}
-        animate={{ width: isSidebarOpen ? 260 : 80 }}
-        className="bg-white border-r border-gray-200 flex flex-col h-full z-30 shadow-sm transition-all duration-300 ease-in-out"
+        animate={{ 
+          width: isMobile ? 260 : (isSidebarOpen ? 260 : 80),
+          x: isMobile && !isSidebarOpen ? -260 : 0
+        }}
+        className={cn(
+          "bg-white border-r border-gray-200 flex flex-col h-full shadow-xl md:shadow-sm transition-all duration-300 ease-in-out z-50 overflow-hidden",
+          isMobile ? "fixed inset-y-0 left-0" : "relative shrink-0"
+        )}
       >
         <div className="p-6 flex items-center justify-between">
-          <div className={cn("flex items-center gap-3 transition-opacity duration-300", !isSidebarOpen && "opacity-0 invisible w-0")}>
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
+          <div className={cn("flex items-center gap-3 transition-opacity duration-300", !isSidebarOpen && !isMobile && "opacity-0 invisible w-0")}>
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20 shrink-0">
               <Share2 className="w-5 h-5 text-white" />
             </div>
-            <h1 className="font-bold text-lg tracking-tight text-gray-900">ProOrg</h1>
+            <h1 className="font-bold text-lg tracking-tight text-gray-900 whitespace-nowrap">ProOrg</h1>
           </div>
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 hover:bg-gray-100 rounded-lg text-gray-400 transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-lg text-gray-400 transition-colors shrink-0"
           >
             {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -342,30 +379,38 @@ export default function App() {
       </motion.aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col relative overflow-hidden">
+      <main className="flex-1 flex flex-col relative overflow-hidden h-full">
         {/* Header */}
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 z-20 shadow-sm">
-          <div className="flex items-center gap-4">
-            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest">
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-8 z-20 shadow-sm shrink-0">
+          <div className="flex items-center gap-3 md:gap-4">
+            {isMobile && (
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="p-2 hover:bg-gray-100 rounded-lg text-gray-600 transition-colors"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            )}
+            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest hidden md:block">
               {activeTab === "chart" ? "Visualization" : "Management"}
             </h2>
-            <div className="h-4 w-px bg-gray-200" />
-            <span className="text-sm font-medium text-gray-600 flex items-center gap-2">
+            <div className="h-4 w-px bg-gray-200 hidden md:block" />
+            <span className="text-xs md:text-sm font-medium text-gray-600 flex items-center gap-2">
               <Users className="w-4 h-4" />
-              {employees.length} Team Members
+              {employees.length} Members
             </span>
             {isAdmin && (
               <div className="flex items-center gap-1.5 px-2 py-1 bg-green-50 text-green-700 rounded-md text-[10px] font-bold uppercase tracking-wider">
-                <ShieldCheck className="w-3 h-3" />
-                Admin Mode
+                <ShieldCheck className="w-3 h-3 hidden md:block" />
+                Admin
               </div>
             )}
           </div>
           
-          <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-50 rounded-lg transition-colors border border-gray-200">
+          <div className="flex items-center gap-2 md:gap-3">
+            <button className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-semibold text-gray-600 hover:bg-gray-50 rounded-lg transition-colors border border-gray-200">
               <Download className="w-4 h-4" />
-              Export PDF
+              <span className="hidden md:inline">Export PDF</span>
             </button>
             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 border-2 border-white shadow-sm" />
           </div>

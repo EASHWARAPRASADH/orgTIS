@@ -81,30 +81,51 @@ export const OrgChart: React.FC<OrgChartProps> = ({ employees }) => {
   const isDragging = useRef(false);
   const lastPos = useRef({ x: 0, y: 0 });
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (e.button !== 0) return;
+  const handlePointerDown = (e: React.MouseEvent | React.TouchEvent) => {
+    // Only left click for mouse
+    if ('button' in e && e.button !== 0) return;
     isDragging.current = true;
-    lastPos.current = { x: e.clientX, y: e.clientY };
+    
+    if ('touches' in e) {
+      lastPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    } else {
+      lastPos.current = { x: (e as React.MouseEvent).clientX, y: (e as React.MouseEvent).clientY };
+    }
   };
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!isDragging.current) return;
-      const dx = e.clientX - lastPos.current.x;
-      const dy = e.clientY - lastPos.current.y;
+      
+      let clientX, clientY;
+      if ('touches' in e) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = (e as MouseEvent).clientX;
+        clientY = (e as MouseEvent).clientY;
+      }
+
+      const dx = clientX - lastPos.current.x;
+      const dy = clientY - lastPos.current.y;
       setTranslate(prev => ({ x: prev.x + dx, y: prev.y + dy }));
-      lastPos.current = { x: e.clientX, y: e.clientY };
+      lastPos.current = { x: clientX, y: clientY };
     };
 
-    const handleMouseUp = () => {
+    const handleUp = () => {
       isDragging.current = false;
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mousemove", handleMove as EventListener);
+    window.addEventListener("mouseup", handleUp);
+    window.addEventListener("touchmove", handleMove as EventListener, { passive: false });
+    window.addEventListener("touchend", handleUp);
+    
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mousemove", handleMove as EventListener);
+      window.removeEventListener("mouseup", handleUp);
+      window.removeEventListener("touchmove", handleMove as EventListener);
+      window.removeEventListener("touchend", handleUp);
     };
   }, []);
 
@@ -222,8 +243,9 @@ export const OrgChart: React.FC<OrgChartProps> = ({ employees }) => {
 
       {/* Canvas */}
       <div
-        className="w-full h-full cursor-grab active:cursor-grabbing"
-        onMouseDown={handleMouseDown}
+        className="w-full h-full cursor-grab active:cursor-grabbing touch-none"
+        onMouseDown={handlePointerDown}
+        onTouchStart={handlePointerDown}
         onWheel={handleWheel}
       >
         <motion.div
