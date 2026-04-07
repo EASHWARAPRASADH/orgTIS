@@ -14,6 +14,7 @@ const NODE_HEIGHT = 100;
 
 export interface OrgChartHandle {
   getContainer: () => HTMLDivElement | null;
+  getGraph: () => HTMLDivElement | null;
   resetView: () => void;
 }
 
@@ -158,6 +159,7 @@ export const OrgChart = forwardRef<OrgChartHandle, OrgChartProps>(({ employees }
 
   useImperativeHandle(ref, () => ({
     getContainer: () => containerRef.current,
+    getGraph: () => containerRef.current?.querySelector('#org-chart-graph') as HTMLDivElement,
     resetView: centerChart
   }));
 
@@ -259,6 +261,7 @@ export const OrgChart = forwardRef<OrgChartHandle, OrgChartProps>(({ employees }
         onWheel={handleWheel}
       >
         <motion.div
+          id="org-chart-graph"
           animate={{
             x: translate.x,
             y: translate.y,

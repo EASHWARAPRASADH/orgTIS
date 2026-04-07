@@ -250,39 +250,45 @@ export default function App() {
       return;
     }
     
-    const container = chartRef.current.getContainer();
-    if (!container) {
-      console.error("Export Container Missing");
+    // 1. Target the inner graph specifically
+    const graphElement = chartRef.current.getGraph();
+    if (!graphElement) {
+      console.error("Export Graph Element Missing");
       return;
     }
 
     try {
       setIsLoading(true);
-      console.log("PDF Export Started...");
+      console.log("PDF Export: Stabilized Mode Started...");
 
-      // Wait longer for any animations and image loads to settle
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // 2. Center and reset view for a consistent starting point
+      chartRef.current.resetView();
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
-      console.log("Capturing Canvas...");
-      const canvas = await html2canvas(container, {
-        scale: 1.5, // Slightly lower scale to avoid memory/cloning issues on Vercel
+      console.log("Capturing Graph...");
+      const canvas = await html2canvas(graphElement, {
+        scale: 1.5,
         useCORS: true,
         logging: true,
         backgroundColor: "#F9FAFB",
         onclone: (clonedDoc) => {
-          console.log("DOM Cloned Successfully. Ready for capture.");
-          // You can perform manual adjustments to the cloned document here if needed
+          const clonedGraph = clonedDoc.getElementById('org-chart-graph');
+          if (clonedGraph) {
+            // Flatten the transforms in the cloned document so html2canvas doesn't get confused
+            clonedGraph.style.transform = 'none';
+            clonedGraph.style.transition = 'none';
+            console.log("Cloned graph flattened.");
+          }
         }
       });
       
-      console.log("Canvas Captured. Validating data...");
+      console.log("Canvas Captured. Generating file...");
       const imgData = canvas.toDataURL('image/png', 0.9);
       
       if (!imgData || imgData === 'data:,') {
-        throw new Error("Canvas generation failed: The output was empty. This usually happens if the container is hidden or the browser hits a memory limit.");
+        throw new Error("Canvas generation failed: The output was empty. This usually happens if the browser hits a memory limit for large charts.");
       }
 
-      console.log("Generating PDF Document...");
       const pdf = new jsPDF({
         orientation: 'landscape',
         unit: 'px',
@@ -297,7 +303,7 @@ export default function App() {
       alert("✅ PDF exported successfully!");
     } catch (error: any) {
       console.error("PDF Export failed:", error);
-      alert(`❌ PDF Export Failed: ${error.message || "Unknown Error"}\n\nThis can happen in some browsers if the chart is too large. Try zooming in/out or changing the layout before exporting.`);
+      alert(`❌ PDF Export Failed: ${error.message || "Unknown Error"}\n\nIf the chart is very large, try reducing siblings/levels in the sidebar before exporting.`);
     } finally {
       setIsLoading(false);
     }
