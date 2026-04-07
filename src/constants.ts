@@ -295,6 +295,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
               name === "Vishveshwar" ? "/assets/employees/vishweshwar.png" : 
               name === "Jayasuriya" ? "/assets/employees/jayasurya.png" : 
               name === "Harini" ? "/assets/employees/harini sri.png" : 
+              name === "Nitesh" ? "/assets/employees/nithesh s.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "priyadharshini",
     color: "#E5E7EB",
