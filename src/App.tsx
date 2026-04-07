@@ -406,10 +406,24 @@ export default function App() {
                 <Menu className="w-5 h-5" />
               </button>
             )}
-            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest hidden md:block">
-              {activeTab === "chart" ? "Visualization" : "Management"}
-            </h2>
-            <div className="h-4 w-px bg-gray-200 hidden md:block" />
+            
+            {/* Company Logo */}
+            <img 
+              src="/assets/logo.png" 
+              alt="Technosprint Logo" 
+              className="h-10 md:h-12 w-auto object-contain drop-shadow-sm"
+              onError={(e) => (e.currentTarget.style.display = 'none')}
+            />
+
+            <div className="hidden md:flex flex-col">
+              <h2 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 leading-tight">
+                ProOrg Chart
+              </h2>
+              <p className="text-[9px] font-bold text-gray-400 tracking-[0.1em] uppercase">Technosprint Info Solutions</p>
+            </div>
+
+            <div className="h-8 w-px bg-gray-200 hidden md:block mx-2" />
+            
             <span className="text-xs md:text-sm font-medium text-gray-600 flex items-center gap-2">
               <Users className="w-4 h-4" />
               {employees.length} Members
