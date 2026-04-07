@@ -10,7 +10,7 @@ interface OrgChartProps {
 }
 
 const NODE_WIDTH = 220;
-const NODE_HEIGHT = 80;
+const NODE_HEIGHT = 100;
 
 export const OrgChart: React.FC<OrgChartProps> = ({ employees }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -337,10 +337,10 @@ export const OrgChart: React.FC<OrgChartProps> = ({ employees }) => {
                 />
                 
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-[14px] font-bold text-gray-900 truncate leading-tight">
+                  <h3 className="text-[14px] font-bold text-gray-900 leading-tight">
                     {node.data.name}
                   </h3>
-                  <p className="text-[10px] font-medium text-gray-500 truncate mt-0.5">
+                  <p className="text-[10px] font-bold text-gray-500 mt-1 uppercase tracking-tight break-words">
                     {node.data.role}
                   </p>
                 </div>
