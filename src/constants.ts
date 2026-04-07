@@ -105,6 +105,8 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     role: "Team Member",
     department: "IST ATHENA",
     photoUrl: name === "Arjun" ? "/assets/employees/arjun.png" : 
+              name === "Deepshika" ? "/assets/employees/deepshika.png" : 
+              name === "Haritha" ? "/assets/employees/hritha.png" : 
               name === "Devasenatipathi" ? "/assets/employees/devasenathipathi.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "yuvaraj",
@@ -118,7 +120,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name: "Ashwika",
     role: "Project Manger OF GOTEK / KUMAR AGRO",
     department: "IST PEGASUS",
-    photoUrl: "https://picsum.photos/seed/ashwika/100/100",
+    photoUrl: "/assets/employees/ashwika.png",
     managerId: "priyadharshini",
     color: "#FCA5A5",
     displayOrder: 12,
@@ -138,7 +140,10 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name,
     role: "Team Member",
     department: "IST PEGASUS",
-    photoUrl: name === "Hariharan" ? "/assets/employees/hariharan.png" : `https://picsum.photos/seed/${name}/100/100`,
+    photoUrl: name === "Hariharan" ? "/assets/employees/hariharan.png" : 
+              name === "Rakshana" ? "/assets/employees/rakshana devi.png" : 
+              name === "Fahima" ? "/assets/employees/faheema.png" : 
+              `https://picsum.photos/seed/${name}/100/100`,
     managerId: "harita_v",
     color: "#FCA5A5",
     displayOrder: 14 + i,
@@ -148,7 +153,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name: "Srivishnu",
     role: "Lead(Kumar Agro)",
     department: "IST PEGASUS",
-    photoUrl: "https://picsum.photos/seed/srivishnu/100/100",
+    photoUrl: "/assets/employees/srivishnu.png",
     managerId: "ashwika",
     color: "#FCA5A5",
     displayOrder: 17,
@@ -192,7 +197,13 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name,
     role: "Team Member",
     department: "IST DYNAMICS",
-    photoUrl: name === "Sanjay" ? "/assets/employees/sanjay.png" : `https://picsum.photos/seed/${name}/100/100`,
+    photoUrl: name === "Shailendhirah" ? "/assets/employees/shilendra.png" : 
+              name === "Diya" ? "/assets/employees/diya.png" : 
+              name === "Sanjay" ? "/assets/employees/sanjay.png" : 
+              name === "Subiksha" ? "/assets/employees/subkisha.png" : 
+              name === "Varshini" ? "/assets/employees/varshini.png" : 
+              name === "Jaseema" ? "/assets/employees/jaseema.png" : 
+              `https://picsum.photos/seed/${name}/100/100`,
     managerId: "maheswaran",
     color: "#93C5FD",
     displayOrder: 22 + i,
@@ -204,7 +215,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name: "Yusuf",
     role: "Project Manager OF RATE 4 GOLD",
     department: "IST NEXUS",
-    photoUrl: "https://picsum.photos/seed/yusuf/100/100",
+    photoUrl: "/assets/employees/yusuf fayas.png",
     managerId: "priyadharshini",
     color: "#C084FC",
     displayOrder: 30,
@@ -229,6 +240,9 @@ export const INITIAL_EMPLOYEES: Employee[] = [
               name === "Nithish_2" ? "/assets/employees/niteesh s.png" : 
               name === "Swedha Sri" ? "/assets/employees/swetha sri.png" : 
               name === "Arpit" ? "/assets/employees/arpith.png" : 
+              name === "Manikandan" ? "/assets/employees/manigandan.png" : 
+              name === "Shivani" ? "/assets/employees/shivani.png" : 
+              name === "Monikka" ? "/assets/employees/monika.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "dhipak",
     color: "#C084FC",
@@ -241,7 +255,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name: "Kollati",
     role: "Porject Manager OF GOTEK (Lanyard Designing)",
     department: "IST R & D",
-    photoUrl: "https://picsum.photos/seed/kollati/100/100",
+    photoUrl: "/assets/employees/kollati.png",
     managerId: "priyadharshini",
     color: "#FB923C",
     displayOrder: 40,
@@ -251,7 +265,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name: "Praveen",
     role: "Lead",
     department: "IST R & D",
-    photoUrl: "https://picsum.photos/seed/praveen/100/100",
+    photoUrl: "/assets/employees/praveen.png",
     managerId: "kollati",
     color: "#FB923C",
     displayOrder: 41,
@@ -261,7 +275,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name: "Vysakhi",
     role: "Team Member",
     department: "IST R & D",
-    photoUrl: "https://picsum.photos/seed/vysakhi/100/100",
+    photoUrl: "/assets/employees/vyshaki.png",
     managerId: "praveen",
     color: "#FB923C",
     displayOrder: 42,
@@ -273,9 +287,12 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name,
     role: "Team Member (Bench)",
     department: "IST VERTEX",
-    photoUrl: name === "Prasana Vengates" ? "/assets/employees/prasanna venkatesh.png" : 
+    photoUrl: name === "Madhesh" ? "/assets/employees/madhesh.png" : 
+              name === "Daksh" ? "/assets/employees/daksh.png" : 
+              name === "Prasana Vengates" ? "/assets/employees/prasanavengetesh.png" : 
               name === "Vishveshwar" ? "/assets/employees/vishweshwar.png" : 
               name === "Jayasuriya" ? "/assets/employees/jayasurya.png" : 
+              name === "Harini" ? "/assets/employees/harini sri.png" : 
               `https://picsum.photos/seed/${name}/100/100`,
     managerId: "priyadharshini",
     color: "#E5E7EB",
