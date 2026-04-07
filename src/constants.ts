@@ -77,7 +77,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     name: "PRIYADHARSHINI M",
     role: "Operation lead",
     department: "Executives",
-    photoUrl: "https://picsum.photos/seed/priya/100/100",
+    photoUrl: "/assets/employees/PRIYADARSHINI.jpeg",
     managerId: "padmavathy",
     color: "#FCD34D",
     displayOrder: 5,
@@ -325,6 +325,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     department: "IST VERTEX",
     photoUrl: name === "Madhesh" ? "/assets/employees/madhesh.png" : 
               name === "Daksh" ? "/assets/employees/daksh.png" : 
+              name === "Anjali" ? "/assets/employees/ANJALI.jpg" : 
               name === "Prasana Vengates" ? "/assets/employees/prasanavengetesh.png" : 
               name === "Vishveshwar" ? "/assets/employees/vishweshwar.png" : 
               name === "Jayasuriya" ? "/assets/employees/jayasurya.png" : 
