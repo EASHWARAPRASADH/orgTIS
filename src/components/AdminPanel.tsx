@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Employee } from "../types";
 import { DEPARTMENTS } from "../constants";
-import { Plus, Trash2, Edit2, X, Check, UserPlus, Users, GripVertical, Camera, Upload, Search, ChevronDown, ChevronRight, Filter, Mail, Phone, Calendar } from "lucide-react";
+import { Plus, Trash2, Edit2, X, Check, UserPlus, Users, GripVertical, Camera, Upload, Search, ChevronDown, ChevronRight, Filter, Mail, Phone, Calendar, Database } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Reorder, useDragControls } from "motion/react";
 
@@ -11,6 +11,7 @@ interface AdminPanelProps {
   onUpdate: (employee: Employee) => void;
   onDelete: (id: string) => void;
   onReorder: (newEmployees: Employee[]) => void;
+  onSyncAll: () => void;
 }
 
 export const AdminPanel: React.FC<AdminPanelProps> = ({
@@ -19,6 +20,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   onUpdate,
   onDelete,
   onReorder,
+  onSyncAll,
 }) => {
   const [isAdding, setIsAdding] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -155,29 +157,38 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
           <Users className="w-5 h-5 text-blue-600" />
           <h2 className="text-lg font-bold text-gray-900">Manage Team</h2>
         </div>
-        <button
-          onClick={() => {
-            setIsAdding(!isAdding);
-            setEditingId(null);
-            setFormData({
-              name: "",
-              role: "",
-              department: DEPARTMENTS[0].name,
-              managerId: null,
-              photoUrl: "https://picsum.photos/seed/new/100/100",
-              contact: "",
-              email: "",
-              joinDate: new Date().toISOString().split('T')[0],
-              bio: "",
-            });
-          }}
-          className={cn(
-            "p-2 rounded-full transition-all",
-            isAdding ? "bg-red-50 text-red-600 rotate-45" : "bg-blue-600 text-white hover:bg-blue-700"
-          )}
-        >
-          <Plus className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onSyncAll}
+            title="Sync live database with constants"
+            className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all"
+          >
+            <Database className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => {
+              setIsAdding(!isAdding);
+              setEditingId(null);
+              setFormData({
+                name: "",
+                role: "",
+                department: DEPARTMENTS[0].name,
+                managerId: null,
+                photoUrl: "https://picsum.photos/seed/new/100/100",
+                contact: "",
+                email: "",
+                joinDate: new Date().toISOString().split('T')[0],
+                bio: "",
+              });
+            }}
+            className={cn(
+              "p-2 rounded-full transition-all",
+              isAdding ? "bg-red-50 text-red-600 rotate-45" : "bg-blue-600 text-white hover:bg-blue-700"
+            )}
+          >
+            <Plus className="w-5 h-5" />
+          </button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto p-6 space-y-6">

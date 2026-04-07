@@ -137,6 +137,27 @@ export default function App() {
     }
   };
 
+  const handleSyncAll = async () => {
+    if (!window.confirm("This will update all live employee data to match the coded constants. Continue?")) {
+      return;
+    }
+    
+    try {
+      setIsLoading(true);
+      const { error } = await supabase
+        .from('employees')
+        .upsert(INITIAL_EMPLOYEES);
+      
+      if (error) throw error;
+      alert("Database synced successfully with constants!");
+    } catch (error: any) {
+      console.error("Sync Error:", error);
+      alert(`Failed to sync: ${error.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleDeleteEmployee = async (id: string) => {
     if (!window.confirm("Are you sure you want to delete this employee? This will move their direct reports to the top level.")) {
       return;
@@ -500,6 +521,7 @@ export default function App() {
                   onUpdate={handleUpdateEmployee}
                   onDelete={handleDeleteEmployee}
                   onReorder={handleReorderEmployees}
+                  onSyncAll={handleSyncAll}
                 />
               </motion.div>
             )}

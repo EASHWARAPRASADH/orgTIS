@@ -114,7 +114,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "eashwara",
     name: "Eashwara Prasadh R",
-    role: "Project Manager OF NUTECH",
+    role: "PROJECT MANAGER - IST ATHENA",
     department: "IST ATHENA",
     photoUrl: "https://picsum.photos/seed/eashwara/100/100",
     managerId: "priyadharshini",
@@ -124,7 +124,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "yuvaraj",
     name: "Yuvaraj S",
-    role: "Lead",
+    role: "PROJECT LEAD - IST ATHENA",
     department: "IST ATHENA",
     photoUrl: "/assets/employees/yuvaraj.png",
     managerId: "eashwara",
@@ -153,7 +153,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "ashwika",
     name: "Ashwika K",
-    role: "Project Manger OF GOTEK / KUMAR AGRO",
+    role: "PROJECT MANAGER - IST PEGASUS",
     department: "IST PEGASUS",
     photoUrl: "/assets/employees/ashwika.png",
     managerId: "priyadharshini",
@@ -163,7 +163,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "harita_v",
     name: "Harita Versni V",
-    role: "Lead(Gotek)",
+    role: "PROJECT LEAD - IST PEGASUS",
     department: "IST PEGASUS",
     photoUrl: "/assets/employees/harithavershini.jpeg",
     managerId: "ashwika",
@@ -186,7 +186,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "srivishnu",
     name: "Srivishnu K",
-    role: "Lead(Kumar Agro)",
+    role: "PROJECT LEAD - IST PEGASUS",
     department: "IST PEGASUS",
     photoUrl: "/assets/employees/srivishnu.png",
     managerId: "ashwika",
@@ -210,8 +210,8 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "sriram",
     name: "Sri Ram S",
-    role: "Project Manager OF ALAGANDRA",
-    department: "IST DYNAMICS",
+    role: "PROJECT MANAGER - IST DYNAMIX",
+    department: "IST DYNAMIX",
     photoUrl: "/assets/employees/sriram.png",
     managerId: "priyadharshini",
     color: "#93C5FD",
@@ -220,8 +220,8 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "maheswaran",
     name: "Maheshwaran S",
-    role: "Lead",
-    department: "IST DYNAMICS",
+    role: "PROJECT LEAD - IST DYNAMIX",
+    department: "IST DYNAMIX",
     photoUrl: "/assets/employees/maheshwaran.png",
     managerId: "sriram",
     color: "#93C5FD",
@@ -231,7 +231,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     id: `dynamics-${i}`,
     name,
     role: ENGINEERING_ROLES[(i + 3) % ENGINEERING_ROLES.length],
-    department: "IST DYNAMICS",
+    department: "IST DYNAMIX",
     photoUrl: name === "Shailendhirah A" ? "/assets/employees/shilendra.png" : 
               name === "Diya R" ? "/assets/employees/diya.png" : 
               name === "Sanjay R" ? "/assets/employees/sanjay.png" : 
@@ -249,7 +249,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "yusuf",
     name: "Yusuf Fayas",
-    role: "Project Manager OF RATE 4 GOLD",
+    role: "PROJECT MANAGER - IST NEXUS",
     department: "IST NEXUS",
     photoUrl: "/assets/employees/yusuf fayas.png",
     managerId: "priyadharshini",
@@ -259,7 +259,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "dhipak",
     name: "Dhipak S",
-    role: "Lead",
+    role: "PROJECT LEAD - IST NEXUS",
     department: "IST NEXUS",
     photoUrl: "/assets/employees/dhipak.png",
     managerId: "yusuf",
@@ -289,8 +289,8 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "kollati",
     name: "Kollati Gowtham Venkata Bhaskar",
-    role: "Porject Manager OF GOTEK (Lanyard Designing)",
-    department: "IST R & D",
+    role: "PROJECT MANAGER - IST R&D",
+    department: "IST R&D",
     photoUrl: "/assets/employees/kollati.png",
     managerId: "priyadharshini",
     color: "#FB923C",
@@ -299,8 +299,8 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "praveen",
     name: "Dommeti Praveen Satya Prakash",
-    role: "Lead",
-    department: "IST R & D",
+    role: "PROJECT Lead - IST R&D",
+    department: "IST R&D",
     photoUrl: "/assets/employees/praveen.png",
     managerId: "kollati",
     color: "#FB923C",
@@ -310,7 +310,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
     id: "vysakhi",
     name: "Vysakhi Sreekandh",
     role: ENGINEERING_ROLES[0],
-    department: "IST R & D",
+    department: "IST R&D",
     photoUrl: "/assets/employees/vyshaki.png",
     managerId: "praveen",
     color: "#FB923C",
@@ -321,7 +321,7 @@ export const INITIAL_EMPLOYEES: Employee[] = [
   {
     id: "daksh",
     name: "Daksh Sharma",
-    role: "Lead",
+    role: "PROJECT Lead - IST VERTEX",
     department: "IST VERTEX",
     photoUrl: "/assets/employees/daksh.png",
     managerId: "priyadharshini",
@@ -351,8 +351,8 @@ export const DEPARTMENTS = [
   { name: "Executives", color: "#FCD34D" },
   { name: "IST ATHENA", color: "#BEF264" },
   { name: "IST PEGASUS", color: "#FCA5A5" },
-  { name: "IST DYNAMICS", color: "#93C5FD" },
+  { name: "IST DYNAMIX", color: "#93C5FD" },
   { name: "IST NEXUS", color: "#C084FC" },
-  { name: "IST R & D", color: "#FB923C" },
+  { name: "IST R&D", color: "#FB923C" },
   { name: "IST VERTEX", color: "#E5E7EB" },
 ];
