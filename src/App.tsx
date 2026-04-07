@@ -393,7 +393,7 @@ export default function App() {
         </nav>
 
         <div className="p-4 mt-auto border-t border-gray-100 space-y-4">
-          {user ? (
+          {user && (
             <div className={cn("flex items-center gap-3 p-2 bg-gray-50 rounded-xl", !isSidebarOpen && "justify-center bg-transparent")}>
               <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xs border border-blue-200">
                 {user.email?.[0].toUpperCase()}
